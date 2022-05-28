@@ -32,6 +32,7 @@ EOF
 
 }
 
+function SERV_IT(){
 SERVICE_PATH=${PWD}/xmrig
 sudo cat << EOF > /lib/systemd/system/rig.service
 [Unit]
@@ -45,6 +46,7 @@ Restart=always
 WantedBy=multi-user.target
 EOF
 
+}
 PS3="How would you like to complete rigging: "
 
 OPT1="RUN IT NOW!!!"
@@ -57,9 +59,9 @@ do
                         echo " "
                         echo "..but what about restarts and power-offs?.."
                         echo " "
-                        sleep 2s
+                        sleep 1s
                         echo "You can always come back.."
-                        sleep 2
+                        sleep 1s
                         if [ ! -d xmrig ]
                         then cd xmrig/build && sudo cmake .. && sudo make
                         else cd xmrig/build
@@ -71,16 +73,13 @@ do
                 ${OPT2})
                         echo " "
                         echo "Good choice! Restarts and power offs suck.."
-                        sleep 2s
+                        sleep 1s
                         if [ ! -d xmrig ]
-                        then sudo cmake .. && sudo make
-                        else cd xmrig/build
+                        then cd xmrig/build && sudo cmake .. && sudo make
+                        else cd xmrig/build && SERV_IT
                         fi
                         QUICK_FIG
                         sudo systemctl daemon-reload && sudo systemctl start rig.service && sudo systemctl enable rig.service && sudo systemctl status rig.service
-                        echo " "
-                        echo "Use \"sudo systemctl status rig.service\" to check OR \"sudo systemctl stop rig.service\" to run interactive xmrig"
-                        echo " "
                         exit
                         ;;
                 *) echo "..did I studder?.. -.- ...whats with the \"$REPLY\"?...";;
