@@ -11,7 +11,7 @@ then echo "${RIG} is already here but maybe an update here and there?... -\(-,-)
 else sudo git clone https://github.com/xmrig/xmrig.git && sudo mkdir xmrig/build
 fi
 
-function quick_fig(){
+function QUICK_FIG(){
 sudo cat << EOF > config.json
 {
     "autosave": true,
@@ -45,7 +45,7 @@ Restart=always
 WantedBy=multi-user.target
 EOF
 
-PS3="How would you like to complete install: "
+PS3="How would you like to complete rigging: "
 
 OPT1="RUN IT NOW!!!"
 OPT2="...a little service and then a peek, please."
@@ -58,19 +58,24 @@ do
                         echo "..but what about restarts and power-offs?.."
                         echo " "
                         sleep 2s
-                        echo "You can always use \"sudo systemctl daemon-reload && sudo systemctl start rig.service && sudo systemctl enable rig.service\""
-                        echo "to run as a service, and then \"systemctl status rig.service\" to check on connection"
-                        sleep 4
-                        cd xmrig/build && sudo cmake .. && sudo make
+                        echo "You can always come back.."
+                        sleep 2
+                        if [ ! -d xmrig ]
+                        then cd xmrig/build && sudo cmake .. && sudo make
+                        else cd xmrig/build
+                        fi
                         QUICK_FIG
-                        sudo ./xmrig
+                        ./xmrig
                         exit
                         ;;
                 ${OPT2})
                         echo " "
                         echo "Good choice! Restarts and power offs suck.."
                         sleep 2s
-                        sudo cmake .. && sudo make
+                        if [ ! -d xmrig ]
+                        then sudo cmake .. && sudo make
+                        else cd xmrig/build
+                        fi
                         QUICK_FIG
                         sudo systemctl daemon-reload && sudo systemctl start rig.service && sudo systemctl enable rig.service && sudo systemctl status rig.service
                         echo " "
