@@ -6,7 +6,7 @@ WRAP="${RIG_NAME}"
 sudo apt update -y && sudo apt upgrade -y && sudo apt install -y git build-essential cmake libuv1-dev libssl-dev libhwloc-dev tmux tor
 
 RIG="xmrig"
-if [ -d xmrig ]
+if [ -d xmrig/build ]
 then echo "${RIG} is already here but maybe an update here and there?... -\(-,-)/-  "
 else sudo git clone https://github.com/xmrig/xmrig.git && sudo mkdir xmrig/build
 fi
@@ -62,9 +62,9 @@ do
                         sleep 1s
                         echo "You can always come back.."
                         sleep 1s
-                        if [ ! -d xmrig ]
+                        if [ ! -e xmrig/build/xmrig ]
                         then cd xmrig/build && sudo cmake .. && sudo make
-                        else cd xmrig/build
+                        else  cd xmrig/build
                         fi
                         QUICK_FIG
                         ./xmrig
@@ -74,7 +74,7 @@ do
                         echo " "
                         echo "Good choice! Restarts and power offs suck.."
                         sleep 1s
-                        if [ ! -d xmrig ]
+                        if [ ! -e xmrig/build/xmrig ]
                         then cd xmrig/build && sudo cmake .. && sudo make
                         else cd xmrig/build && SERV_IT
                         fi
