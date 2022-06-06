@@ -3,7 +3,7 @@
 
 Fast Xmrig installs with options!
 
-3% default donation for my efforts...but nothing is stopping you from changing it! ^.^
+5% default donation for my efforts...and you can change it in the cli interface! ^.^
 
 
-FINAL EDITS COMING NEXT WEEK 6/10/22!
+FINAL EDITS FOR v0.1.0 COMING 6/10/22!
