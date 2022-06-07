@@ -191,7 +191,10 @@ cd
 EOF
 
 chmod +x /data/data/com.termux/files/home/.termux/boot/bootRig.sh
+echo " "
 echo "Download Termux Boot at https://f-droid.org/packages/com.termux.boot/"
+echo " "
+sleep 3s
 }
 
 #for readability
