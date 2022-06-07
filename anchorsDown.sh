@@ -169,7 +169,7 @@ EOF
 
 function SERV_IT(){
 SERVICE_PATH=${PWD}/xmrig
-cat << EOF > /lib/systemd/system/rig.service
+sudo cat << EOF > /lib/systemd/system/rig.service
 [Unit]
 Description=rig
 [Service]
