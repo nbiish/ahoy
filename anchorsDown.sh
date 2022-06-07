@@ -253,6 +253,8 @@ do
         esac
 done
 
+#for readability
+echo " "
 
 PS3="Arr and such, how would you like to complete rigging: "
 OPT1="RUN IT NOW!!!"
