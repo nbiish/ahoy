@@ -15,10 +15,15 @@ Windows users will want Docker Desktop and WSL..
 
 ............................................................................................
 
+Will detect linux, Android, and Windows devices and install device needs.
+............................................................................................
+
 Android users will want Termux from FDroid https://f-droid.org/en/packages/com.termux/
+
 ............................................................................................
 
 Termux Github suggests that fdroid is used if you want to keep it working with fdroid termux extensions, like Termux Boot and Termux Tasker.
+
 ...........................................................................................
 
 Heres is a quick tutorial on install, setup, starting and stopping on Android Termux.
