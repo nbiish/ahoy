@@ -183,7 +183,9 @@ EOF
 if [ ${ANDROID} = true ]; then
 cd xmrig/build && cmake .. -DWITH_HWLOC=OFF && make
 QUICK_FIG
+termux-wake-lock
 ./xmrig
+exit
 fi
 
 #for readability
@@ -205,24 +207,28 @@ do
                         sleep 1s
                         echo "You can always come back.."
                         sleep 2s
-                        if [ -e xmrig/build ]; then
+                        if [ ! -e xmrig/build/xmrig ]; then
                         cd xmrig/build && cmake .. && make
+                        else
+                        cd xmrig/build
                         fi
                         QUICK_FIG
                         ./xmrig
-                        break
+                        exit
                         ;;
                 ${OPT2})
                         echo " "
                         echo "Good choice! Restarts and power offs suck.."
                         sleep 1s
-                        if [ -e xmrig/build ]; then
+                        if [ ! -e xmrig/build/xmrig ]; then
                         cd xmrig/build && cmake .. && make
+                        else
+                        cd xmrig/build
                         fi
                         SERV_IT
                         QUICK_FIG
                         systemctl daemon-reload && systemctl start rig.service && systemctl enable rig.service && systemctl status rig.service
-                        break
+                        exit
                         ;;
                 *)
                         echo " "
