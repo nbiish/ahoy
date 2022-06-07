@@ -65,8 +65,8 @@ done
 echo " "
 
 # CPU usage?
-CPU_USE="75"
-PS3="What percent CPU use would you like?(default is 75) : "
+CPU_USE="100"
+PS3="What percent CPU use would you like?(default is 100) : "
 select CPU in "25%" "50%" "75%" "100%"
 do
         case ${CPU} in
