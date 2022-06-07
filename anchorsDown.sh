@@ -105,6 +105,7 @@ echo " "
 sleep 2s
 # CHECK OS AND CD BACK TO HOME
 cd ../..
+ANDROID=false
 if [ -d etc/ ]; then
 cd && UBUNTU_INSTALL
 elif [ -d files/ ]; then
