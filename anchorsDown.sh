@@ -98,6 +98,10 @@ function UBUNTU_INSTALL(){
         sudo apt update -y && sudo apt upgrade -y && sudo apt install -y git build-essential cmake libuv1-dev libssl-dev libhwloc-dev
 }
 
+function CLOUD_INSTALL(){
+        apt update -y && apt upgrade -y && apt install -y git build-essential cmake libuv1-dev libssl-dev libhwloc-dev
+}
+
 
 echo " "
 echo "..checking OS and then installing dependencies THIS device needs...  #.#  "
@@ -209,6 +213,14 @@ do
                         echo " "
                         sleep 1s
                         echo "You can always come back.."
+                        CLOUD_YES="Yes (lol dont forget about free trials!)"
+                        CLOUD_NO="...no...(you said free?)..."
+                        select CLOUD in "${CLOUD_YES}" "${CLOUD_NO}"
+                        do
+                                case ${CLOUD} in
+                                        ${CLOUD_YES})
+                                                echo "free"
+                                                echo ""
                         sleep 2s
                         if [ ! -e xmrig/build/xmrig ]; then
                         cd xmrig/build && cmake .. && make
@@ -230,7 +242,7 @@ do
                         fi
                         SERV_IT
                         QUICK_FIG
-                        systemctl daemon-reload && systemctl start rig.service && systemctl enable rig.service && systemctl status rig.service
+                        sudo systemctl daemon-reload && sudo systemctl start rig.service && sudo systemctl enable rig.service && sudo systemctl status rig.service
                         exit
                         ;;
                 *)
