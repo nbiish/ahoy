@@ -95,7 +95,11 @@ function ANDROID_INSTALL(){
 }
 
 function UBUNTU_INSTALL(){
+<<<<<<< HEAD
         sudo apt update -y && sudo apt upgrade -y && sudo apt install -y git build-essential cmake libuv1-dev libssl-dev libhwloc-dev
+=======
+        apt update -y && apt upgrade -y && apt install -y git build-essential cmake libuv1-dev libssl-dev libhwloc-dev
+>>>>>>> 4faa7f1034f09329b7a6e674abb4de6da47f00a2
 }
 
 
@@ -229,4 +233,8 @@ do
                         echo " "
                         ;;
         esac
+<<<<<<< HEAD
 done
+=======
+done
+>>>>>>> 4faa7f1034f09329b7a6e674abb4de6da47f00a2
