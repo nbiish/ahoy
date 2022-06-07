@@ -180,7 +180,7 @@ EOF
 }
 
 
-if [ ANDROID = true ]; then
+if [ ${ANDROID} = true ]; then
 cd xmrig/build && cmake .. -DWITH_HWLOC=OFF && make
 QUICK_FIG
 ./xmrig
