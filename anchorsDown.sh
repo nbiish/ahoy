@@ -5,55 +5,56 @@
 # DOCKER STUFF
 
 #change to home directory
+echo " "
 echo "Installing to Home Directory..."
-sleep 2s
+echo " "
 cd
 
 # name displayed on https://moneroocean.stream/
 read -p "rig id to be displayed at https://moneroocean.stream/  : " RIG_NAME
 
 # WALLET ADDRESS?
-read -p "Enter your wallet address: " WALLET_ADDRESS
-while [ ${#WALLET_ADDRESS} -ne 95 -o ${#WALLET_ADDRESS} -ne 106 ]
-do
-        echo "...something isnt right, its a very specific length...you should try again.."
-        read -p "Enter your wallet address: " WALLET_ADDRESS
-        
+WALLET_ADDRESS=""
+while [ ${#WALLET_ADDRESS} -ne 95 -o ${#WALLET_ADDRESS} -ne 106 ]; do
+echo " "
+echo "Get a XMR wallet from..."
+echo "Monero at https://www.getmonero.org/ "
+echo "CakeWallet app https://play.google.com/store/apps/dev?id=4613572273941486879 "
+echo "Exodus app https://play.google.com/store/apps/details?id=exodusmovement.exodus "
+echo " "
+read -p "enter a Monero address: " WALLET_ADDRESS
+if [ ${#WALLET_ADDRESS} == 95 -o ${#WALLET_ADDRESS} == 106 ]; then
+break
+else
+continue
+fi
 done
+
 
 #for readability
 echo " "
 
 # donation amount?
-DEFAULT_DONATION="5"
-DONATION_SELECTION="Select amount 1-99"
-PS3="Enter donation % to developer(default 5%) : "
+DEFAULT_DONATION="Default is 5%"
+DONATION_SELECTION="Select amount 1-99%"
+PS3="Donation % for developer : "
 select DON in "${DEFAULT_DONATION}" "${DONATION_SELECTION}"
 do
         case ${DON} in
                 ${DEFAULT_DONATION})
-                        DONATION_SELECTION="${DEFAULT_DONATION}"
+                        DONATION_SELECTION="5"
                         echo " "
                         echo "..much appreciated!..dont forget to tell your friends!!  ^.^ "
                         sleep 2s
                         echo " "
                         break;;
                 ${DONATION_SELECTION})
-                        read -p "Enter donation % for developer : " DONATION_CHOICE
-                        while [ ${DONATION_CHOICE} -lt 0 ] && [ ${DONATION_CHOICE} -gt 99 ]
-                        do
-                                echo "...its any number 1-99..my love for you increases each % <3 "
-                                read -p "Enter donation % for developer : " DONATION_CHOICE
-                                if [ ${DONATION_CHOICE} -gt 0 ] && [ ${DONATION_CHOICE} -lt 100 ]
-                                then
-                                        echo " "
-                                        echo "DONT FORGET TO TELL YOUR FRIENDS!! ^o^ "
-                                        echo " "
-                                        sleep 2s
-                                        break
-                                else    
-                                        continue
-                                fi
+                        read -p "...its any number 1-99..my love for you increases each % <3 : " DONATION_SELECTION
+                        until [ ${DONATION_SELECTION} -gt 0 -a ${DONATION_SELECTION} -lt 100 ]; do
+                        echo " "
+                        echo "...its any number 1-99..and my love for you increases with each % <3 "
+                        echo " "
+                        read -p "Enter donation % for developer : " DONATION_SELECTION
                         done
                         break;;
                 *) echo "..dont you feel like you have good enough choices already?..";;
@@ -81,22 +82,27 @@ do
                 100%)
                         CPU_USE="100" 
                         break;;
-                *) echo "..look...if you want to do this you get four options...\"${REPLY}\" doesnt make sense..." ;;
+                *) 
+                        echo " "
+                        echo "..look...if you want to do this you get four options...\"${REPLY}\" doesnt make sense..."
+                        echo " "
+                        ;;
         esac
 done
 
 function ANDROID_INSTALL(){
         pkg update -y && pkg upgrade -y && pkg install -y wget git cmake clang libuv automake libtool autoconf
 }
+
 function UBUNTU_INSTALL(){
-        sudo apt update -y && sudo apt upgrade -y && sudo apt install -y git build-essential cmake libuv1-dev libssl-dev libhwloc-dev
+        apt update -y && apt upgrade -y && apt install -y git build-essential cmake libuv1-dev libssl-dev libhwloc-dev
 }
 
 
 echo " "
 echo "..checking OS and then installing dependencies THIS device needs...  #.#  "
 echo " "
-sleep 3s
+sleep 2s
 # CHECK OS AND CD BACK TO HOME
 cd ../..
 if [ -d etc/ ]; then
@@ -104,7 +110,7 @@ cd && UBUNTU_INSTALL
 elif [ -d files/ ]; then
 cd && ANDROID_INSTALL
 ANDROID=true
-elif [ ! -d etc/ ] && [ ! -d files/ ]; then
+elif [ ! -d etc/ -a ! -d files/ ]; then
 docker run --rm -it ubuntu && UBUNTU_INSTALL
 else
 echo "You need to install Docker Desktop at https://docs.docker.com/desktop/windows/install/ if you're a Windows user.."
@@ -177,10 +183,10 @@ if [ ANDROID = true ]; then
 cd xmrig/build && cmake .. -DWITH_HWLOC=OFF && make
 QUICK_FIG
 ./xmrig
-exit
-else
-continue
 fi
+
+#for readability
+echo " "
 
 
 PS3="Arr and such, how would you like to complete rigging: "
@@ -198,9 +204,8 @@ do
                         sleep 1s
                         echo "You can always come back.."
                         sleep 2s
-                        if [ ! -e xmrig/build/xmrig ]
-                        then mkdir xmrig/build && cd xmrig/build && cmake .. && make
-                        else cd xmrig/build
+                        if [ -e xmrig/build ]; then
+                        cd xmrig/build && cmake .. && make
                         fi
                         QUICK_FIG
                         ./xmrig
@@ -210,14 +215,18 @@ do
                         echo " "
                         echo "Good choice! Restarts and power offs suck.."
                         sleep 1s
-                        if [ ! -e xmrig/build/xmrig ]
-                        then mkdir xmrig/build && cd xmrig/build && cmake .. && make
-                        else cd xmrig/build && SERV_IT
+                        if [ -e xmrig/build ]; then
+                        cd xmrig/build && cmake .. && make
                         fi
+                        SERV_IT
                         QUICK_FIG
                         systemctl daemon-reload && systemctl start rig.service && systemctl enable rig.service && systemctl status rig.service
                         break
                         ;;
-                *) echo "..did I studder?.. =.= ...whats with the \"${REPLY}\"?..." ;;
+                *)
+                        echo " "
+                        echo "..did I studder?.. =.= ...whats with the \"${REPLY}\"?..."
+                        echo " "
+                        ;;
         esac
 done
