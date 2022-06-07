@@ -220,6 +220,8 @@ DROID_RUN_AND_SERVICE="Install and run BUT with a service on next boot."
                                 echo " "
                                 echo "...things are pretty good so far, but \"${REPLY}\" wont get us farther..."
                                 echo " "
+                esac
+        done
         QUICK_FIG
         termux-wake-lock
         ./xmrig
