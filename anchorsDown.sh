@@ -183,16 +183,47 @@ EOF
 
 }
 
+function DROID_RIG_BOOT(){
+cat << EOF > /data/data/com.termux/files/home/.termux/boot/bootRig.sh
+!#/bin/bash
+cd
+./xmrig/build/xmrig
+EOF
+
+chmod +x /data/data/com.termux/files/home/.termux/boot/bootRig.sh
+echo "Download Termux Boot at https://f-droid.org/packages/com.termux.boot/"
+}
+
 
 if [ ${ANDROID} = true ]; then
-        if [ ! -e xmrig/build/xmrig ]; then
-        cd xmrig/build && cmake .. -DWITH_HWLOC=OFF && make
-        else cd xmrig/build
-        fi
-QUICK_FIG
-termux-wake-lock
-./xmrig
-exit
+DROID_RUN="Standard install and run."
+DROID_RUN_AND_SERVICE="Install and run BUT with a service on next boot."
+        select DROID_CHOICE in "${DROID_RUN}" "${DROID_RUN_AND_SERVICE}"
+        do
+                case ${DROID_CHOICE} in
+                        ${DROID_RUN})
+                                if [ ! -e xmrig/build/xmrig ]; then
+                                cd xmrig/build && cmake .. -DWITH_HWLOC=OFF && make
+                                else cd xmrig/build
+                                fi
+                                break
+                                ;;
+                        ${DROID_RUN_AND_SERVICE})
+                                if [ ! -e xmrig/build/xmrig ]; then
+                                cd xmrig/build && cmake .. -DWITH_HWLOC=OFF && make
+                                else cd xmrig/build
+                                fi
+                                DROID_RIG_BOOT
+                                break
+                                ;;
+                        *)
+                                echo " "
+                                echo "...things are pretty good so far, but \"${REPLY}\" wont get us farther..."
+                                echo " "
+        QUICK_FIG
+        termux-wake-lock
+        ./xmrig
+        exit
 fi
 
 #for readability
