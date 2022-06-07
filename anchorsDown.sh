@@ -194,8 +194,11 @@ chmod +x /data/data/com.termux/files/home/.termux/boot/bootRig.sh
 echo "Download Termux Boot at https://f-droid.org/packages/com.termux.boot/"
 }
 
+#for readability
+echo " "
 
 if [ ${ANDROID} = true ]; then
+PS3="Running your mobile rig as : "
 DROID_RUN="Standard install and run."
 DROID_RUN_AND_SERVICE="Install and run BUT with a service on next boot."
         select DROID_CHOICE in "${DROID_RUN}" "${DROID_RUN_AND_SERVICE}"
@@ -231,6 +234,7 @@ fi
 #for readability
 echo " "
 
+PS3="Are you installing this on a Ubuntu cloud instance? : "
 CLOUD_YES="Yes (theres free trials!)  *,*"
 CLOUD_NO="...no...(you said free?)..."
 select CLOUD in "${CLOUD_YES}" "${CLOUD_NO}"
