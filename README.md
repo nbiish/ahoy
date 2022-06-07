@@ -15,7 +15,6 @@ Windows users will want Docker Desktop and WSL..
 
 ............................................................................................
 
-Will detect linux, Android, and Windows devices and install device needs.
 ............................................................................................
 
 Android users will want Termux from FDroid https://f-droid.org/en/packages/com.termux/
