@@ -49,10 +49,10 @@ do
                         echo " "
                         break;;
                 ${DONATION_SELECTION})
-                        read -p "...its any number 1-99..my love for you increases each % <3 : " DONATION_SELECTION
+                        read -p "Choose single integer 1-99. My love for you increases with each % <3 : " DONATION_SELECTION
                         until [ ${DONATION_SELECTION} -gt 0 -a ${DONATION_SELECTION} -lt 100 ]; do
                         echo " "
-                        echo "...its any number 1-99..and my love for you increases with each % <3 "
+                        echo "Choose single integer 1-99. My love for you increases with each % <3 : "
                         echo " "
                         read -p "Enter donation % for developer : " DONATION_SELECTION
                         done
@@ -138,7 +138,7 @@ fi
 function QUICK_FIG(){
 cat << EOF > config.json
 {
-    "autosave": false,
+    "autosave": true,
     "cpu": {
             "max-threads-hint": ${CPU_USE},
             },
@@ -181,7 +181,10 @@ EOF
 
 
 if [ ${ANDROID} = true ]; then
-cd xmrig/build && cmake .. -DWITH_HWLOC=OFF && make
+        if [ ! -e xmrig/build/xmrig ]; then
+        cd xmrig/build && cmake .. -DWITH_HWLOC=OFF && make
+        else cd xmrig/build
+        fi
 QUICK_FIG
 termux-wake-lock
 ./xmrig
