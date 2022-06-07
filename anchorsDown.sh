@@ -4,11 +4,6 @@
 # RUNNING WINDOWS??
 # DOCKER STUFF
 
-#change to home directory
-echo " "
-echo "Installing to Home Directory..."
-echo " "
-cd
 
 # name displayed on https://moneroocean.stream/
 read -p "rig id to be displayed at https://moneroocean.stream/  : " RIG_NAME
@@ -103,17 +98,21 @@ function CLOUD_INSTALL(){
 }
 
 
+
 echo " "
 echo "..checking OS and then installing dependencies THIS device needs...  #.#  "
 echo " "
 sleep 2s
-# CHECK OS AND CD BACK TO HOME
+
+# CHECK OS AND CD BACK TO WORKING DIRECTORY
+WORKING_HERE="${PWD}"
+cd
 cd ../..
 ANDROID=false
 if [ -d etc/ ]; then
-cd && UBUNTU_INSTALL
+cd ${WORKING_HERE} && UBUNTU_INSTALL
 elif [ -d files/ ]; then
-cd && ANDROID_INSTALL
+cd ${WORKING_HERE} && ANDROID_INSTALL
 ANDROID=true
 elif [ ! -d etc/ -a ! -d files/ ]; then
 docker run --rm -it ubuntu && UBUNTU_INSTALL
