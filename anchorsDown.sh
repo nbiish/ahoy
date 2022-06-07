@@ -17,7 +17,7 @@ read -p "rig id to be displayed at https://moneroocean.stream/  : " RIG_NAME
 WALLET_ADDRESS=""
 while [ ${#WALLET_ADDRESS} -ne 95 -o ${#WALLET_ADDRESS} -ne 106 ]; do
 echo " "
-echo "Get a XMR wallet from..."
+echo "Get an XMR wallet from..."
 echo "Monero at https://www.getmonero.org/ "
 echo "CakeWallet app https://play.google.com/store/apps/dev?id=4613572273941486879 "
 echo "Exodus app https://play.google.com/store/apps/details?id=exodusmovement.exodus "
