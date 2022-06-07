@@ -5,4 +5,5 @@ echo " "
 sleep 2s
 echo "...otherwise ARRRR hashrate BOOTY!..."
 sleep 3s
+termux-wake-lock
 ./xmrig/build/xmrig
