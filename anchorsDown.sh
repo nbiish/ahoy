@@ -198,6 +198,24 @@ fi
 #for readability
 echo " "
 
+CLOUD_YES="Yes (theres free trials!)  *,*"
+CLOUD_NO="...no...(you said free?)..."
+select CLOUD in "${CLOUD_YES}" "${CLOUD_NO}"
+do
+        case ${CLOUD} in
+                ${CLOUD_YES})
+                        CLOUD_CHOICE="yes"
+                        break
+                        ;;
+                ${CLOUD_NO})
+                        CLOUD_CHOICE="no"
+                        break
+                        ;;
+                *)
+                        echo "\"${REPLY}\" wasnt a choice lol"
+        esac
+done
+
 
 PS3="Arr and such, how would you like to complete rigging: "
 OPT1="RUN IT NOW!!!"
@@ -213,20 +231,25 @@ do
                         echo " "
                         sleep 1s
                         echo "You can always come back.."
-                        CLOUD_YES="Yes (lol dont forget about free trials!)"
-                        CLOUD_NO="...no...(you said free?)..."
-                        select CLOUD in "${CLOUD_YES}" "${CLOUD_NO}"
-                        do
-                                case ${CLOUD} in
-                                        ${CLOUD_YES})
-                                                echo "free"
-                                                echo ""
                         sleep 2s
-                        if [ ! -e xmrig/build/xmrig ]; then
-                        cd xmrig/build && cmake .. && make
-                        else
-                        cd xmrig/build
-                        fi
+                        case ${CLOUD_CHOICE} in
+                                yes)
+                                        if [ ! -e xmrig/build/xmrig ]; then
+                                        cd xmrig/build && cmake .. -DWITH_HWLOC=OFF && make
+                                        else
+                                        cd xmrig/build
+                                        fi
+                                        break
+                                        ;;
+                                no)
+                                        if [ ! -e xmrig/build/xmrig ]; then
+                                        cd xmrig/build && cmake .. && make
+                                        else
+                                        cd xmrig/build
+                                        fi
+                                        break
+                                        ;;
+                        esac
                         QUICK_FIG
                         ./xmrig
                         exit
