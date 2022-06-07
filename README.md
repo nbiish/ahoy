@@ -15,6 +15,10 @@ Windows users will want Docker Desktop and WSL..
 
 ............................................................................................
 
+Detects OS of Android, Linux, and Windows and installs individual dependencies automagically.
+
+............................................................................................
+
 ............................................................................................
 
 Android users will want Termux from FDroid https://f-droid.org/en/packages/com.termux/
