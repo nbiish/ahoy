@@ -59,31 +59,6 @@ done
 #for readability
 echo " "
 
-# CPU usage?
-CPU_USE="100"
-PS3="What percent CPU use would you like?(default is 100) : "
-select CPU in "25%" "50%" "75%" "100%"
-do
-        case ${CPU} in
-                25%)
-                        CPU_USE="25"
-                        break;;
-                50%)
-                        CPU_USE="50"
-                        break;;
-                75%)
-                        CPU_USE="75"
-                        break;;
-                100%)
-                        CPU_USE="100" 
-                        break;;
-                *) 
-                        echo " "
-                        echo "..look...if you want to do this you get four options...\"${REPLY}\" doesnt make sense..."
-                        echo " "
-                        ;;
-        esac
-done
 
 function ANDROID_INSTALL(){
         pkg update -y && pkg upgrade -y && pkg install -y wget git cmake clang libuv automake libtool autoconf
@@ -142,9 +117,7 @@ function QUICK_FIG(){
 cat << EOF > config.json
 {
     "autosave": true,
-    "cpu": {
-            "max-threads-hint": ${CPU_USE},
-            },
+    "cpu": true,
     "opencl": false,
     "cuda": false,
     "pools": [
@@ -165,7 +138,7 @@ EOF
 }
 
 
-
+# TODO create service without sudo for cloud and root users
 function SERV_IT(){
 SERVICE_PATH=${PWD}/xmrig
 sudo cat << EOF > /lib/systemd/system/rig.service
