@@ -1,7 +1,6 @@
 # ahoy
 
-Get a wallet address at either of these..
---
+## Get a wallet address at either of these..
 
 Monero at https://www.getmonero.org/ "
 
@@ -13,8 +12,13 @@ Exodus app https://play.google.com/store/apps/details?id=exodusmovement.exodus
 
 Windows users will want to download and extract the Monero Ocean miner https://github.com/MoneroOcean/xmrig/releases
 ...open a terminal in the same directory you extracted the xmrig win64 zip to and enter : \
-` git clone https://github.com/K3NW48/ahoy.git && ./ahoy/anchorsDown.sh `
+`git clone https://github.com/K3NW48/ahoy.git && ./ahoy/anchorsDown.sh`
 
+---
+
+---
+
+Should be ran in the $HOME directory for Linux and Termux. Windows users will be fine.
 Detects OS of Android, Linux, or Windows and installs individual dependencies automagically.
 
 ............................................................................................
