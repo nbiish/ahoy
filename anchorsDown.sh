@@ -114,7 +114,7 @@ cd ${WORKING_HERE} && ANDROID_INSTALL
 ANDROID=true
 export ANDROID
 elif [ -f WinRing0x64.sys ]; then
-QUICK_FIG && ./xmrig.exe
+cd ${WORKING_HERE} && QUICK_FIG && ./xmrig.exe
 exit
 else
 echo "You need to download Monero Ocean's Xmrig win64 at https://github.com/MoneroOcean/xmrig/releases if you're a Windows user.."
