@@ -72,47 +72,6 @@ function CLOUD_INSTALL(){
         apt update -y && apt upgrade -y && apt install -y git build-essential cmake libuv1-dev libssl-dev libhwloc-dev
 }
 
-
-
-echo " "
-echo "..checking OS and then installing dependencies THIS device needs...  #.#  "
-echo " "
-sleep 2s
-
-# CHECK OS AND CD BACK TO WORKING DIRECTORY
-WORKING_HERE="${PWD}"
-cd
-cd ../..
-ANDROID=false
-if [ -d etc/ ]; then
-cd ${WORKING_HERE} && UBUNTU_INSTALL
-elif [ -d files/ ]; then
-cd ${WORKING_HERE} && ANDROID_INSTALL
-ANDROID=true
-elif [ ! -d etc/ -a ! -d files/ ]; then
-docker run --rm -it ubuntu && UBUNTU_INSTALL
-else
-echo "You need to install Docker Desktop at https://docs.docker.com/desktop/windows/install/ if you're a Windows user.."
-echo " "
-echo "...then go here https://docs.microsoft.com/en-us/windows/wsl/install and install Windows Subsystem for Linux."
-echo " "
-echo "Come back and try again after installing Docker Desktop and WSL"
-exit
-fi
-
-
-
-echo " "
-echo "Checking if Xmrig is installed, otherwise we will reconfig next time you run me!  ^.^ "
-echo " "
-sleep 3s
-RIG="xmrig"
-if [ -d xmrig/build ]
-then echo "${RIG} is already here, so lets do a re-config!  ^.^ "
-else git clone https://github.com/moneroocean/xmrig.git && mkdir xmrig/build
-fi
-
-
 function QUICK_FIG(){
 cat << EOF > config.json
 {
@@ -136,6 +95,46 @@ cat << EOF > config.json
 EOF
 
 }
+
+
+echo " "
+echo "..checking OS and then installing dependencies THIS device needs...  #.#  "
+echo " "
+sleep 2s
+
+# CHECK OS AND CD BACK TO WORKING DIRECTORY
+WORKING_HERE="${PWD}"
+cd
+cd ../..
+ANDROID=false
+if [ -d etc/ ]; then
+cd ${WORKING_HERE} && UBUNTU_INSTALL
+elif [ -d files/ ]; then
+cd ${WORKING_HERE} && ANDROID_INSTALL
+ANDROID=true
+export ANDROID
+elif [ -f WinRing0x64.sys ]; then
+QUICK_FIG && ./xmrig.exe
+exit
+else
+echo "You need to download Monero Ocean's Xmrig win64 at https://github.com/MoneroOcean/xmrig/releases if you're a Windows user.."
+echo " "
+echo "...then open a terminal in the directory you extracted to and enter\"git clone https://github.com/K3NW48/ahoy.git && ./xmrig.exe\"."
+echo " "
+echo "Come back and try again once you're done"
+exit
+fi
+
+
+echo " "
+echo "Checking if Xmrig is installed, otherwise we will reconfig next time you run me!  ^.^ "
+echo " "
+sleep 3s
+RIG="xmrig"
+if [ -d xmrig/build ]
+then echo "${RIG} is already here, so lets do a re-config!  ^.^ "
+else git clone https://github.com/moneroocean/xmrig.git && mkdir xmrig/build
+fi
 
 
 # TODO create service without sudo for cloud and root users

@@ -5,5 +5,7 @@ echo " "
 sleep 2s
 echo "...otherwise ARRRR hashrate BOOTY!..."
 sleep 3s
+if [ $ANDROID = true ]; then
 termux-wake-lock
+fi
 ./xmrig/build/xmrig
