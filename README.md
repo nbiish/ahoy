@@ -2,7 +2,7 @@
 
 If your low cpu device crashes after the miner starts you might have to swap to a dingy https://github.com/K3NW48/dingy
 
-## Get a wallet address at either of these..
+## Get a Monero (XMR) wallet address at either of these..
 
 Monero at https://www.getmonero.org/ "
 
