@@ -208,6 +208,7 @@ fi
 #for readability
 echo " "
 
+CLOUD_YES=""
 PS3="Are you installing this on a Ubuntu cloud instance? : "
 CLOUD_YES="Yes (theres free trials!)  *,*"
 CLOUD_NO="...no...(you said free?)..."
@@ -215,11 +216,11 @@ select CLOUD in "${CLOUD_YES}" "${CLOUD_NO}"
 do
         case ${CLOUD} in
                 ${CLOUD_YES})
-                        CLOUD_CHOICE="yes"
+                        CLOUD_CHOICE=true
                         break
                         ;;
                 ${CLOUD_NO})
-                        CLOUD_CHOICE="no"
+                        CLOUD_CHOICE=false
                         break
                         ;;
                 *)
@@ -245,24 +246,18 @@ do
                         sleep 1s
                         echo "You can always come back.."
                         sleep 2s
-                        case ${CLOUD_CHOICE} in
-                                yes)
-                                        if [ ! -e xmrig/build/xmrig ]; then
+                        if [ ${CLOUD_CHOICE} == true ]; then
+                                if [ ! -e xmrig/build/xmrig ]; then
                                         cd xmrig/build && cmake .. -DWITH_HWLOC=OFF && make
                                         else
                                         cd xmrig/build
-                                        fi
-                                        break
-                                        ;;
-                                no)
-                                        if [ ! -e xmrig/build/xmrig ]; then
+                                fi
+                        fi
+                        if [ ! -e xmrig/build/xmrig ]; then
                                         cd xmrig/build && cmake .. && make
                                         else
                                         cd xmrig/build
-                                        fi
-                                        break
-                                        ;;
-                        esac
+                        fi
                         QUICK_FIG
                         ./xmrig
                         exit
