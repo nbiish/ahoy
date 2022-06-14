@@ -266,6 +266,17 @@ do
                         echo " "
                         echo "Good choice! Restarts and power offs suck.."
                         sleep 1s
+                        if [ (id -u) != 0 ]; then
+                                echo "you need to run this with sudo"
+                                exit
+                        fi
+                        if [ ${CLOUD_CHOICE} == true ]; then
+                                if [ ! -e xmrig/build/xmrig ]; then
+                                        cd xmrig/build && cmake .. -DWITH_HWLOC=OFF && make
+                                        else
+                                        cd xmrig/build
+                                fi
+                        fi
                         if [ ! -e xmrig/build/xmrig ]; then
                         cd xmrig/build && cmake .. && make
                         else
