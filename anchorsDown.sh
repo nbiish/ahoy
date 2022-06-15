@@ -4,6 +4,21 @@
 # RUNNING WINDOWS??
 # DOCKER STUFF
 
+WORKING_HERE="${PWD}"
+ANDROID=""
+cd
+cd ../..
+if [ -d files/ ] ; then
+        ANDROID=true
+        export ANDROID
+        :
+elif [ $(id -u) != 0 ]; then
+        echo " "
+        echo "You need to run as root.  \"./anchorsDown.sh\"."
+        echo " "
+        exit
+fi
+cd ${WORKING_HERE}
 
 # name displayed on https://moneroocean.stream/
 read -p "rig id to be displayed at https://moneroocean.stream/  : " RIG_NAME
@@ -65,7 +80,7 @@ function ANDROID_INSTALL(){
 }
 
 function UBUNTU_INSTALL(){
-        sudo apt update -y && sudo apt upgrade -y && sudo apt install -y git build-essential cmake libuv1-dev libssl-dev libhwloc-dev
+        apt update -y && apt upgrade -y && apt install -y git build-essential cmake libuv1-dev libssl-dev libhwloc-dev
 }
 
 function CLOUD_INSTALL(){
@@ -106,13 +121,10 @@ sleep 2s
 WORKING_HERE="${PWD}"
 cd
 cd ../..
-ANDROID=false
 if [ -d etc/ ]; then
 cd ${WORKING_HERE} && UBUNTU_INSTALL
-elif [ -d files/ ]; then
+elif [ ANDROID=true ]; then
 cd ${WORKING_HERE} && ANDROID_INSTALL
-ANDROID=true
-export ANDROID
 elif [ -f WinRing0x64.sys ]; then
 cd ${WORKING_HERE} && QUICK_FIG && ./xmrig.exe
 exit
@@ -137,10 +149,10 @@ else git clone https://github.com/moneroocean/xmrig.git && mkdir xmrig/build
 fi
 
 
-# TODO create service without sudo for cloud and root users
+# TODO create service without for cloud and root users
 function SERV_IT(){
 SERVICE_PATH=${PWD}/xmrig
-sudo cat << EOF > /lib/systemd/system/rig.service
+cat << EOF > /lib/systemd/system/rig.service
 [Unit]
 Description=rig
 [Service]
@@ -162,10 +174,6 @@ cd
 EOF
 
 chmod +x /data/data/com.termux/files/home/.termux/boot/bootRig.sh
-echo " "
-echo "Download Termux Boot at https://f-droid.org/packages/com.termux.boot/"
-echo " "
-sleep 3s
 }
 
 #for readability
@@ -186,11 +194,19 @@ DROID_RUN_AND_SERVICE="Install and run BUT with a service on next boot."
                                 break
                                 ;;
                         ${DROID_RUN_AND_SERVICE})
+                                if [ ! -e /data/data/com.termux/files/home/.termux/boot/bootRig.sh ]; then
+                                        DROID_RIG_BOOT
+                                fi
+                                echo " "
+                                echo "Download Termux Boot at https://f-droid.org/packages/com.termux.boot/"
+                                echo " "
+                                sleep 4s
                                 if [ ! -e xmrig/build/xmrig ]; then
                                 cd xmrig/build && cmake .. -DWITH_HWLOC=OFF && make
                                 else cd xmrig/build
                                 fi
                                 DROID_RIG_BOOT
+                                ./xmrig
                                 break
                                 ;;
                         *)
@@ -266,10 +282,6 @@ do
                         echo " "
                         echo "Good choice! Restarts and power offs suck.."
                         sleep 1s
-                        if [ (id -u) != 0 ]; then
-                                echo "you need to run this with sudo"
-                                exit
-                        fi
                         if [ ${CLOUD_CHOICE} == true ]; then
                                 if [ ! -e xmrig/build/xmrig ]; then
                                         cd xmrig/build && cmake .. -DWITH_HWLOC=OFF && make
@@ -284,7 +296,7 @@ do
                         fi
                         SERV_IT
                         QUICK_FIG
-                        sudo systemctl daemon-reload && sudo systemctl start rig.service && sudo systemctl enable rig.service && sudo systemctl status rig.service
+                        systemctl daemon-reload && systemctl start rig.service && systemctl enable rig.service && systemctl status rig.service
                         exit
                         ;;
                 *)
