@@ -15,6 +15,22 @@ if [ -d files/ ] ; then
         :
 elif [ -f WinRing0x64.sys ]; then
         WINDOWS=true
+        WIN_INSTALL_YES="Yes! I'm READY!! ^,^ "
+        WIN_INSTALL_NO="Not yet! Thanks for the link! *.* "
+        PS3="Have you installed Monero Ocean win64 from https://github.com/MoneroOcean/xmrig/releases yet? : "
+        select WINSTALL in "${WINDOWS_INSTALL_YES}" "${WINDOWS_INSTALL_NO}"
+        do
+                case ${WINSTALL} in
+                        ${WINDOWS_INSTALL_YES})
+                        break
+                        ;;
+                        ${WINDOWS_INSTALL_NO})
+                        echo "git clone ahoy into your Monero Ocean miner and run me again to quick config! ^.^ "
+                        sleep 5s
+                        exit
+                        ;;
+                esac
+        done
         :
 elif [ $(id -u) != 0 ]; then
         echo " "
@@ -122,6 +138,10 @@ echo " "
 sleep 2s
 
 # CHECK OS AND CD BACK TO WORKING DIRECTORY
+if [ WINDOWS=true ]; then
+QUICK_FIG && ./xmrig.exe
+exit
+fi
 WORKING_HERE="${PWD}"
 cd
 cd ../..
@@ -129,9 +149,6 @@ if [ -d etc/ ]; then
 cd ${WORKING_HERE} && UBUNTU_INSTALL
 elif [ ANDROID=true ]; then
 cd ${WORKING_HERE} && ANDROID_INSTALL
-elif [ WINDOWS=true ]; then
-cd ${WORKING_HERE} && QUICK_FIG && ./xmrig.exe
-exit
 fi
 
 
