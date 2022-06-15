@@ -132,8 +132,6 @@ cd ${WORKING_HERE} && ANDROID_INSTALL
 elif [ WINDOWS=true ]; then
 cd ${WORKING_HERE} && QUICK_FIG && ./xmrig.exe
 exit
-else
-
 fi
 
 
