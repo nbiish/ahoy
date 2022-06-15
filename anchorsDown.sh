@@ -176,7 +176,7 @@ chmod +x /data/data/com.termux/files/home/.termux/boot/bootRig.sh
 #for readability
 echo " "
 
-if [ ${ANDROID} = true ]; then
+if [ ${ANDROID} == true ]; then
 PS3="Running your mobile rig as : "
 DROID_RUN="Standard install and run."
 DROID_RUN_AND_SERVICE="Install and run BUT with a service on next boot."
