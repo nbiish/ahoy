@@ -6,11 +6,15 @@
 
 WORKING_HERE="${PWD}"
 ANDROID=""
+WINDOWS=""
 cd
 cd ../..
 if [ -d files/ ] ; then
         ANDROID=true
         export ANDROID
+        :
+elif [ -f WinRing0x64.sys ]; then
+        WINDOWS=true
         :
 elif [ $(id -u) != 0 ]; then
         echo " "
@@ -125,16 +129,11 @@ if [ -d etc/ ]; then
 cd ${WORKING_HERE} && UBUNTU_INSTALL
 elif [ ANDROID=true ]; then
 cd ${WORKING_HERE} && ANDROID_INSTALL
-elif [ -f WinRing0x64.sys ]; then
+elif [ WINDOWS=true ]; then
 cd ${WORKING_HERE} && QUICK_FIG && ./xmrig.exe
 exit
 else
-echo "You need to download Monero Ocean's Xmrig win64 at https://github.com/MoneroOcean/xmrig/releases if you're a Windows user.."
-echo " "
-echo "...then open a terminal in the directory you extracted to and enter\"git clone https://github.com/K3NW48/ahoy.git && ./xmrig.exe\"."
-echo " "
-echo "Come back and try again once you're done"
-exit
+
 fi
 
 
