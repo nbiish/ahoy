@@ -138,7 +138,7 @@ echo " "
 sleep 2s
 
 # CHECK OS AND CD BACK TO WORKING DIRECTORY
-if [ WINDOWS=true ]; then
+if [ WINDOWS == true ]; then
 QUICK_FIG && ./xmrig.exe
 exit
 fi
