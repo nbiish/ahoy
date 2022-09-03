@@ -4,9 +4,9 @@ If your low cpu device crashes after the miner starts you might have to swap to 
 
 ## Get a Monero (XMR) wallet address at either of these..
 
-Monero at https://www.getmonero.org/ "
+Monero at https://www.getmonero.org/ 
 
-CakeWallet app https://play.google.com/store/apps/dev?id=4613572273941486879 "
+CakeWallet app https://play.google.com/store/apps/dev?id=4613572273941486879 
 
 Exodus app https://play.google.com/store/apps/details?id=exodusmovement.exodus
 
