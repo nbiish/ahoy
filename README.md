@@ -6,7 +6,8 @@
 
 ### ahoy
 
-Like https://github.com/K3NW48/dingy but for the wittle baby miners that crash out.
+Your miner crashing out? Use https://github.com/K3NW48/dingy  
+
 
 ### Get a Monero (XMR) wallet address at either of these..
 
