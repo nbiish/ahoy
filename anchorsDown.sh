@@ -93,15 +93,15 @@ echo " "
 
 
 function ANDROID_INSTALL(){
-        pkg update -y && pkg upgrade -y && echo 'y' | pkg install -y wget git cmake clang libuv automake libtool autoconf
+        pkg update -y && pkg upgrade -y && echo 'y' | pkg install wget git cmake clang libuv automake libtool autoconf
 }
 
 function UBUNTU_INSTALL(){
-        apt update -y && apt upgrade -y && echo 'y' | apt install -y git build-essential cmake libuv1-dev libssl-dev libhwloc-dev
+        apt update -y && apt upgrade -y && echo 'y' | apt install git build-essential cmake libuv1-dev libssl-dev libhwloc-dev
 }
 
 function CLOUD_INSTALL(){
-        apt update -y && apt upgrade -y && echo 'y' | apt install -y git build-essential cmake libuv1-dev libssl-dev libhwloc-dev
+        apt update -y && apt upgrade -y && echo 'y' | apt install git build-essential cmake libuv1-dev libssl-dev libhwloc-dev
 }
 
 function QUICK_FIG(){
