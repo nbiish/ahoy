@@ -1,44 +1,42 @@
 ***Termux Users***  
-`pkg install termux-exec && git clone https://github.com/K3NW48/ahoy.git && ./anchorsDown.sh`  
+>`pkg install termux-exec && git clone https://github.com/K3NW48/ahoy.git && ./anchorsDown.sh` 
+
 ***Linux and WSL Users***   
-`git clone https://github.com/K3NW48/ahoy.git && ./anchorsDown.sh`
+>`git clone https://github.com/K3NW48/ahoy.git && ./anchorsDown.sh`  
 
-# ahoy
+### ahoy
 
-**NOTICE**:
-If your low cpu device crashes after the miner starts you might have to swap to a dingy https://github.com/K3NW48/dingy
+Like https://github.com/K3NW48/dingy but for the wittle baby miners that crash out.
 
-## Get a Monero (XMR) wallet address at either of these..
+### Get a Monero (XMR) wallet address at either of these..
 
-Monero at https://www.getmonero.org/ 
+>Monero at https://www.getmonero.org/ 
+>
+>CakeWallet app https://play.google.com/store/apps/dev?id=4613572273941486879 
+>
+>Exodus app https://play.google.com/store/apps/details?id=exodusmovement.exodus  
 
-CakeWallet app https://play.google.com/store/apps/dev?id=4613572273941486879 
-
-Exodus app https://play.google.com/store/apps/details?id=exodusmovement.exodus
 
 
-## Linux Users
+# Linux Users
 
-`git clone https://github.com/K3NW48/ahoy.git && ./anchorsDown.sh`
-Dont forget about free cloud computing trials!
-## Windows Users
+>Dont forget about free cloud computing trials!  
+>`git clone https://github.com/K3NW48/ahoy.git && ./anchorsDown.sh`  
 
-Windows users will want to download and extract the Monero Ocean miner https://github.com/MoneroOcean/xmrig/releases
+# Windows Users
 
-Then open a WSL (Windows Subsytem for Linux) terminal in the same directory you extracted the xmrig win64 zip to and enter : \
-`git clone https://github.com/K3NW48/ahoy.git && ./ahoy/anchorsDown.sh`
+>Windows users will want to download and extract the Monero Ocean miner https://github.com/MoneroOcean/xmrig/releases
+>
+>Then open a WSL (Windows Subsytem for Linux) terminal in the same directory you extracted the xmrig win64 zip to and enter : `git clone https://github.com/K3NW48/ahoy.git && ./ahoy/anchorsDown.sh`  
 
-## Android Users
+# Android Users
 
 ***IMPORTANT***  
-`pkg install termux-exec` before executing `./anchorsDown.sh` 
-**OR**  
-`pkg install termux-exec && ./anchorsDown.sh`
-
-
-Android users will want Termux from FDroid https://f-droid.org/en/packages/com.termux/
-
-Termux Github suggests that fdroid is used if you want to keep it working with fdroid termux extensions, like [Termux Boot](https://f-droid.org/en/packages/com.termux.boot/) and [Termux Tasker](https://f-droid.org/en/packages/com.termux.tasker/).
-
-Heres is a old tutorial on install, setup, starting and stopping on Android Termux.
-https://youtu.be/x99l71_iG4I
+`pkg install termux-exec` before executing `./anchorsDown.sh`  
+  
+>Android users will want Termux from FDroid https://f-droid.org/en/packages/com.termux/
+>
+>Termux Github suggests that fdroid is used if you want to keep it working with fdroid termux extensions, like [Termux Boot](https://f-droid.org/en/packages/com.termux.boot/) and [Termux Tasker](https://f-droid.org/en/packages/com.termux.tasker/).
+>
+>Heres is a old tutorial on install, setup, starting and stopping on Android Termux.
+>https://youtu.be/x99l71_iG4I
