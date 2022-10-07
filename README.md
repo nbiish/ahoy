@@ -1,3 +1,7 @@
+### ahoy
+
+Your miner crashing out? Use https://github.com/K3NW48/dingy  
+
 ## QUICK INSTALL  
 
 >***Termux Users***  
@@ -5,11 +9,6 @@
 >
 >***Linux and WSL Users***   
 >`git clone https://github.com/K3NW48/ahoy.git && ./ahoy/anchorsDown.sh`  
-
-### ahoy
-
-Your miner crashing out? Use https://github.com/K3NW48/dingy  
-
 
 ### Get a Monero (XMR) wallet address at either of these..
 
@@ -39,7 +38,7 @@ Your miner crashing out? Use https://github.com/K3NW48/dingy
 >***SO COPY/PASTE THIS***  
 >`pkg install termux-exec && git clone https://github.com/K3NW48/ahoy.git && ./ahoy/anchorsDown.sh`  
   
->Android users will want Termux from [FDroid](https://f-droid.org/en/packages/com.termux/) if you want to keep it working with fdroid termux extensions like [Termux Boot](https://f-droid.org/en/packages/com.termux.boot/).
+>Android users will want Termux from [FDroid](https://f-droid.org/en/packages/com.termux/) if you want to keep it working with Termux extensions like [Termux Boot](https://f-droid.org/en/packages/com.termux.boot/).
 >
 >The [Termux repo on Github](https://github.com/termux/termux-app/releases) is also an option, however Termux boot is only available for the FDroid release.
 >
