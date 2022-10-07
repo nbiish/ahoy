@@ -1,8 +1,10 @@
+## QUICK INSTALL  
+
 ***Termux Users***  
->`pkg install termux-exec && git clone https://github.com/K3NW48/ahoy.git && ./anchorsDown.sh` 
+>`pkg install termux-exec && git clone https://github.com/K3NW48/ahoy.git && ./ahoy/anchorsDown.sh` 
 
 ***Linux and WSL Users***   
->`git clone https://github.com/K3NW48/ahoy.git && ./anchorsDown.sh`  
+>`git clone https://github.com/K3NW48/ahoy.git && ./ahoy/anchorsDown.sh`  
 
 ### ahoy
 
@@ -34,6 +36,8 @@ Your miner crashing out? Use https://github.com/K3NW48/dingy
 
 ***IMPORTANT***  
 `pkg install termux-exec` before executing `./anchorsDown.sh`  
+***RUN***  
+`pkg install termux-exec && git clone https://github.com/K3NW48/ahoy.git && ./ahoy/anchorsDown.sh  
   
 >Android users will want Termux from FDroid https://f-droid.org/en/packages/com.termux/
 >
