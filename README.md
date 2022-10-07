@@ -35,9 +35,9 @@ Your miner crashing out? Use https://github.com/K3NW48/dingy
 # Android Users
 
 ***IMPORTANT***  
-`pkg install termux-exec` before executing `./anchorsDown.sh`  
-***RUN***  
-`pkg install termux-exec && git clone https://github.com/K3NW48/ahoy.git && ./ahoy/anchorsDown.sh  
+>`pkg install termux-exec` before executing `./anchorsDown.sh`  
+>***RUN***  
+>`pkg install termux-exec && git clone https://github.com/K3NW48/ahoy.git && ./ahoy/anchorsDown.sh`  
   
 >Android users will want Termux from FDroid https://f-droid.org/en/packages/com.termux/
 >
