@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 
 
-# RUNNING WINDOWS??
-# DOCKER STUFF
-
 WORKING_HERE="${PWD}"
 ANDROID=""
 WINDOWS=""
@@ -96,15 +93,15 @@ echo " "
 
 
 function ANDROID_INSTALL(){
-        pkg update -y && pkg upgrade -y && pkg install -y wget git cmake clang libuv automake libtool autoconf
+        pkg update -y && pkg upgrade -y && echo 'y' | pkg install -y wget git cmake clang libuv automake libtool autoconf
 }
 
 function UBUNTU_INSTALL(){
-        apt update -y && apt upgrade -y && apt install -y git build-essential cmake libuv1-dev libssl-dev libhwloc-dev
+        apt update -y && apt upgrade -y && echo 'y' | apt install -y git build-essential cmake libuv1-dev libssl-dev libhwloc-dev
 }
 
 function CLOUD_INSTALL(){
-        apt update -y && apt upgrade -y && apt install -y git build-essential cmake libuv1-dev libssl-dev libhwloc-dev
+        apt update -y && apt upgrade -y && echo 'y' | apt install -y git build-essential cmake libuv1-dev libssl-dev libhwloc-dev
 }
 
 function QUICK_FIG(){
@@ -135,7 +132,7 @@ EOF
 echo " "
 echo "..checking OS and then installing dependencies THIS device needs...  #.#  "
 echo " "
-sleep 2s
+sleep 4s
 
 # CHECK OS AND CD BACK TO WORKING DIRECTORY
 if [ WINDOWS == true ]; then
@@ -155,7 +152,7 @@ fi
 echo " "
 echo "Checking if Xmrig is installed, otherwise we will reconfig next time you run me!  ^.^ "
 echo " "
-sleep 3s
+sleep 4s
 RIG="xmrig"
 if [ -d xmrig/build ]
 then echo "${RIG} is already here, so lets do a re-config!  ^.^ "
@@ -240,8 +237,8 @@ echo " "
 
 CLOUD_YES=""
 PS3="Are you installing this on a Ubuntu cloud instance? : "
-CLOUD_YES="Yes (theres free trials!)  *,*"
-CLOUD_NO="...no...(you said free?)..."
+CLOUD_YES="Yes *,*"
+CLOUD_NO="No...(theres free trials!)"
 select CLOUD in "${CLOUD_YES}" "${CLOUD_NO}"
 do
         case ${CLOUD} in
