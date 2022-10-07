@@ -5,7 +5,7 @@ Your miner crashing out? Use https://github.com/K3NW48/dingy
 ## QUICK INSTALL  
 
 >***Termux Users***  
->`pkg install termux-exec git && git clone https://github.com/K3NW48/ahoy.git && ./ahoy/anchorsDown.sh` 
+>`echo 'y' | pkg install termux-exec git && git clone https://github.com/K3NW48/ahoy.git && ./ahoy/anchorsDown.sh` 
 >
 >***Linux and WSL Users***   
 >`git clone https://github.com/K3NW48/ahoy.git && ./ahoy/anchorsDown.sh`  
