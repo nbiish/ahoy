@@ -6,7 +6,7 @@ ANDROID=""
 WINDOWS=""
 cd
 cd ../..
-if [ -d .termux/ ] ; then
+if [ $(uname -a | grep -oci 'android') == 1 ] ; then
         ANDROID=true
         export ANDROID
         :
@@ -93,7 +93,7 @@ echo " "
 
 
 function ANDROID_INSTALL(){
-        pkg update -y && pkg upgrade -y && echo 'y' | pkg install wget git cmake clang libuv automake libtool autoconf
+        pkg update -yf && pkg upgrade -yf && echo 'y' | pkg install wget git cmake clang libuv automake libtool autoconf
 }
 
 function UBUNTU_INSTALL(){
@@ -232,7 +232,6 @@ DROID_RUN_AND_SERVICE="Install and run BUT with a service on next boot."
         exit
 fi
 
-if [ ANDROID != true ]; then
 echo " "
 CLOUD_CHOICE=""
 PS3="Are you installing this on a Ubuntu cloud instance? : "
@@ -253,7 +252,7 @@ do
                         echo "\"${REPLY}\" wasnt a choice lol"
         esac
 done
-fi
+
 
 #for readability
 echo " "
