@@ -9,8 +9,9 @@ cd ../..
 if [ $(uname -a | grep -oci 'android') == 1 ] ; then
         ANDROID=true
         export ANDROID
-        :
-elif [ -f WinRing0x64.sys ]; then
+fi
+
+if [ -f WinRing0x64.sys ]; then
         WINDOWS=true
         WIN_INSTALL_YES="Yes! I'm READY!! ^,^ "
         WIN_INSTALL_NO="Not yet! Thanks for the link! *.* "
