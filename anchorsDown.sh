@@ -9,9 +9,8 @@ cd ../..
 if [ $(uname -a | grep -oci 'android') == 1 ] ; then
         ANDROID=true
         export ANDROID
-fi
-
-if [ -f WinRing0x64.sys ]; then
+        :
+elif [ -f WinRing0x64.sys ]; then
         WINDOWS=true
         WIN_INSTALL_YES="Yes! I'm READY!! ^,^ "
         WIN_INSTALL_NO="Not yet! Thanks for the link! *.* "
@@ -30,7 +29,7 @@ if [ -f WinRing0x64.sys ]; then
                 esac
         done
         :
-elif [ $(id -u) != 0 ]; then
+elif [ $(uname -a | grep -oci 'linux') == 1 && $(id -u) != 0 ]; then
         echo " "
         echo "You need to run as root.  \"sudo ./anchorsDown.sh\"."
         echo " "
