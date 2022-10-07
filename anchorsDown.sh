@@ -232,13 +232,12 @@ DROID_RUN_AND_SERVICE="Install and run BUT with a service on next boot."
         exit
 fi
 
-#for readability
+if [ ANDROID != true ]; then
 echo " "
-
-CLOUD_YES=""
+CLOUD_CHOICE=""
 PS3="Are you installing this on a Ubuntu cloud instance? : "
-CLOUD_YES="Yes *,*"
-CLOUD_NO="No...(theres free trials!)"
+CLOUD_YES="Yes (theres free trials!)  *,*"
+CLOUD_NO="...no...(you said free?)..."
 select CLOUD in "${CLOUD_YES}" "${CLOUD_NO}"
 do
         case ${CLOUD} in
@@ -254,6 +253,7 @@ do
                         echo "\"${REPLY}\" wasnt a choice lol"
         esac
 done
+fi
 
 #for readability
 echo " "
