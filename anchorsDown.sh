@@ -7,7 +7,7 @@ WINDOWS=false
 cd
 cd ../..
 if [ $(uname -a | grep -oci 'android') == 1 ] ; then
-        ANDROID=true
+        ${ANDROID}=true
         export ANDROID
         :
 elif [ -f WinRing0x64.sys ]; then
@@ -190,7 +190,7 @@ chmod +x /data/data/com.termux/files/home/.termux/boot/bootRig.sh
 #for readability
 echo " "
 
-if [ ANDROID == true ]; then
+if [ ${ANDROID} == true ]; then
 PS3="Running your mobile rig as : "
 DROID_RUN="Standard install and run."
 DROID_RUN_AND_SERVICE="Install and run BUT with a service on next boot."
