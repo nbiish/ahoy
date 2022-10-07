@@ -2,8 +2,8 @@
 
 
 WORKING_HERE="${PWD}"
-ANDROID=""
-WINDOWS=""
+ANDROID=false
+WINDOWS=false
 cd
 cd ../..
 if [ $(uname -a | grep -oci 'android') == 1 ] ; then
