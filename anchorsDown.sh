@@ -6,7 +6,7 @@ ANDROID=""
 WINDOWS=""
 cd
 cd ../..
-if [ -d files/ ] ; then
+if [ -d .termux/ ] ; then
         ANDROID=true
         export ANDROID
         :
