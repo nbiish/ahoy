@@ -8,7 +8,7 @@ Your miner crashing out? Use https://github.com/K3NW48/dingy
 > `echo 'y' | pkg install termux-exec git && git clone https://github.com/K3NW48/ahoy.git && ./ahoy/anchorsDown.sh`
 >
 > **_Linux and WSL Users_**  
-> `git clone https://github.com/K3NW48/ahoy.git && ./ahoy/anchorsDown.sh`
+> `git clone https://github.com/K3NW48/ahoy.git && sudo ./ahoy/anchorsDown.sh`
 
 ### Get a Monero (XMR) wallet address at either of these..
 
