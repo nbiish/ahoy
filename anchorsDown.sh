@@ -28,11 +28,13 @@ if [ $(uname -a | grep -oci 'wsl') == 1 ]; then
                 esac
         done
         :
-elif [ \($(uname -a | grep -oci 'linux') == 1\) -a \($(id -u) != 0\) ]; then
-        echo " "
-        echo "You need to run as root.  \"sudo ./anchorsDown.sh\"."
-        echo " "
-        exit
+elif [ $(uname -a | grep -oci 'linux') == 1]; then
+                if [ $(id -u) != 0 ]; then
+                echo " "
+                echo "You need to run as root.  \"sudo ./anchorsDown.sh\"."
+                echo " "
+                exit
+                fi
 fi
 
 # name displayed on https://moneroocean.stream/
@@ -95,7 +97,7 @@ function ANDROID_INSTALL(){
 }
 
 function UBUNTU_INSTALL(){
-        apt update -y && apt upgrade -y && echo 'y' | apt install git build-essential cmake libuv1-dev libssl-dev libhwloc-dev
+        sudo apt update -y && sudo apt upgrade -y && echo 'y' | sudo apt install git build-essential cmake libuv1-dev libssl-dev libhwloc-dev
 }
 
 function CLOUD_INSTALL(){
