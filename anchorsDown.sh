@@ -28,7 +28,7 @@ if [ $(uname -a | grep -oci 'wsl') == 1 ]; then
                 esac
         done
         :
-elif [ ($(uname -a | grep -oci 'linux') == 1) && $(id -u) != 0 ]; then
+elif [ ($(uname -a | grep -oci 'linux') == 1) && ($(id -u) != 0) ]; then
         echo " "
         echo "You need to run as root.  \"sudo ./anchorsDown.sh\"."
         echo " "
