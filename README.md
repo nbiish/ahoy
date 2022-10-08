@@ -19,7 +19,7 @@ Your miner crashing out? Use https://github.com/K3NW48/dingy
 > Exodus app https://play.google.com/store/apps/details?id=exodusmovement.exodus
 >
 > **_USE Your Monero(XMR)_**  
-> Use my [Crypto.com](https://crypto.com/app/ucnwaccbb7) affiliate link to use your Monero(XMR) after swapping to BTC and we both get $25 extra!
+> Use my [Crypto.com](https://crypto.com/app/ucnwaccbb7) affiliate link to use your Monero(XMR) **after swapping to BTC** and we both get $25 extra!
 
 # Linux Users
 
