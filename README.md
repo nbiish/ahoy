@@ -17,11 +17,13 @@ Your miner crashing out? Use https://github.com/K3NW48/dingy
 > CakeWallet app https://play.google.com/store/apps/dev?id=4613572273941486879
 >
 > Exodus app https://play.google.com/store/apps/details?id=exodusmovement.exodus
->
-> **_USE Your Monero(XMR)_**  
+
+### **_USE Your Monero(XMR)_**
+
 > Use my [Crypto.com](https://crypto.com/app/ucnwaccbb7) affiliate link to use your Monero(XMR) **after swapping to BTC** and we both get $25 extra!
->
-> **_CHECK FOR MINERS_**  
+
+### **_CHECK YOUR MINERS_**
+
 > https://moneroocean.stream
 
 # Linux Users
