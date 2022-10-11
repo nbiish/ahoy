@@ -1,5 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
+echo "Scope your rigs status at https://moneroocean.stream"
 echo " "
+sleep 5s
 echo "run anchorsDown.sh again to reconfigure! ^.^ "
 echo " "
 sleep 4s
