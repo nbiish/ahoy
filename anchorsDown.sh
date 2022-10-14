@@ -157,8 +157,8 @@ echo "Checking if Xmrig is installed, otherwise we will reconfig next time you r
 echo " "
 sleep 4s
 RIG="xmrig"
-if [ -d xmrig/build ]
-then echo "${RIG} is already here, so lets do a re-config!  ^.^ "
+if [ -d xmrig/build ]; then 
+echo "${RIG} is already here, so lets do a re-config!  ^.^ "
 else git clone https://github.com/moneroocean/xmrig.git && mkdir xmrig/build
 fi
 
